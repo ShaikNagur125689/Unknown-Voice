@@ -1,0 +1,16 @@
+# Render Blueprint — lets Render set the service up from this file.
+# In Render: New + → Blueprint → pick this repo. Then fill the two secrets.
+services:
+  - type: web
+    name: unsent
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SUPABASE_URL
+        sync: false          # paste in the Render dashboard
+      - key: SUPABASE_SERVICE_KEY
+        sync: false          # paste in the Render dashboard (keep secret)
+      - key: SUPABASE_BUCKET
+        value: voices
